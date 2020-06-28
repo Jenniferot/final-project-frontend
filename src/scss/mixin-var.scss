@@ -1,0 +1,43 @@
+$accent-color: #56f2db;
+$accent-color-button: rgb(48, 181, 167);
+$accent-color-dark: rgb(0, 140, 131);
+$search-field-gray: #d9fef4d2;
+$accent-orange: #ff3246;
+$accent-color-yellow: #e3901e;
+
+
+@mixin colors($color, $background) {
+  color: $color;
+  background-color: $background;
+}
+
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin display($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin details-title {
+  font-size: 17px;
+  margin: 6px 0px;
+  margin-top: 10px;
+  color: #008c83;
+}
+
+@mixin button($border-radius, $padding) {
+  border: none;
+  border-radius: $border-radius;
+  padding: $padding;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: Roboto;
+  width: fit-content;
+  font-weight: 600;
+  letter-spacing: 1px;
+}

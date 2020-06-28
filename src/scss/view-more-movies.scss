@@ -1,0 +1,120 @@
+@import './mixin-var.scss';
+
+.genre-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-right: 16px;
+
+  select {
+    width: 120px;
+    border-radius: 5px 5px 5px 5px;
+    background-color: $search-field-gray;
+    border: none;
+    border-right: 1px solid rgb(133, 177, 174);
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    font-family: "Roboto";
+    font-size: 11px;
+  }
+
+  h4 {
+    margin-top: 0px;
+
+  }
+
+}
+
+input {
+  @include colors(rgb(0, 0, 0), $search-field-gray);
+  border: none;
+  width: -webkit-fill-available;
+
+  &:focus {
+    outline: none;
+    border: 1px solid $accent-color;
+  }
+}
+
+.movie-wrapper-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .pagination {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-family: Roboto;
+    font-weight: 400;
+    margin-top: 20px;
+
+    p {
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    button {
+      @include colors(black, $search-field-gray);
+      @include button(1px, 3px 8px);
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.5;
+    }
+  }
+
+  .movie-wrapper {
+    display: flex;
+    position: relative;
+    width: 19%;
+    margin: 5px;
+    overflow: hidden;
+    width: 45%;
+
+    @media (min-width: 667px) {
+      width: 29%
+    }
+
+    @media (min-width: 1024px) {
+      width: 19%;
+    }
+
+    .added-button {
+      height: 9px;
+      width: 7px;
+      padding-left: -3px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    &:hover .movie-image {
+      opacity: 0.4;
+      transition: 0.2s ease-in-out;
+    }
+
+    &:hover .movie-details {
+      opacity: 1;
+      transition: 0.2s ease-in-out;
+    }
+
+    .movie-details {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: absolute;
+      bottom: 0;
+      opacity: 0;
+      color: white;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      padding: 5px 10px;
+    }
+  }
+}

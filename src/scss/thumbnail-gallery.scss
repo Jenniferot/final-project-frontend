@@ -1,0 +1,20 @@
+.thumbnail-gallery {
+  width: 100%;
+
+  @media (min-width: 1024px) {
+    width: 100%;
+  }
+
+  .thumbnail-gallery-display {
+    width: 100%;
+  }
+
+  .thumbnail-gallery-thumbs {
+    width: 100%;
+
+    img {
+      cursor: pointer;
+      max-width: 20%;
+    }
+  }
+}

@@ -1,0 +1,123 @@
+@import './mixin-var.scss';
+
+.login-register-container {
+  @include size(100%, 100vh);
+  @include display(column, center, center);
+  margin-top: -60px;
+
+  .login-register {
+
+    @include size(80%, 50%);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.48);
+
+    @media (min-width: 667px) {
+      @include size(50%, 40%);
+    }
+  }
+
+  .header-description {
+    @include colors(rgb(255, 255, 255), rgb(29, 33, 33));
+    text-align: center;
+    font-family: Helvetica Neue, sans-serif;
+    font-size: 1em;
+    font-weight: 500;
+    letter-spacing: 1px;
+
+    @media (min-width: 667px) {
+      font-size: 1.2em;
+    }
+  }
+
+  form {
+    @include display(column, space-evenly, unset);
+    font-size: 14px;
+    height: -webkit-fill-available;
+    max-height: 100%;
+    padding: 10px 10px;
+    background-color: rgb(29, 33, 33);
+    padding-top: 20px;
+
+    @media (min-width: 1200px) {
+      padding: 20px 60px;
+      font-size: 16px;
+    }
+
+    p {
+      display: inline;
+      margin-right: 5px;
+      font-size: 10px;
+    }
+  }
+
+  .error-message {
+    font-size: 14px;
+    color: red;
+  }
+
+  label {
+    @include colors(#666666, white);
+    width: 90%;
+    align-self: center;
+    padding: 5px 10px;
+    border-radius: 3px;
+    margin-bottom: 5px;
+    font-weight: 400;
+    font-size: 12px;
+  }
+
+  input {
+    @include size(100%, 25px);
+    background-color: white;
+    font-size: 16px;
+    border: none;
+
+    @media (min-width: 1200px) {
+      width: 75%;
+    }
+  }
+
+  button {
+    @include button(4px, 5px 60px);
+    @include colors(white, $accent-color-yellow);
+    align-self: center;
+    font-size: 12px;
+    margin: 10px 0;
+
+    @media (min-width: 667px) {
+      font-size: 12px;
+    }
+  }
+
+  .link-section {
+    font-size: 14px;
+    background-color: $accent-color-dark;
+    margin: 0;
+    padding: 24px;
+
+    @media (min-width: 667px) {
+      font-size: 17px;
+    }
+
+    p {
+      font-size: 14px;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    a {
+      margin-left: 3px;
+      text-decoration: none;
+      color: white;
+      font-size: 14px;
+      font-weight: 500;
+      border-bottom: 1px solid $accent-color-yellow;
+
+      &:hover {
+        border-bottom: 1px solid $accent-color-yellow;
+        color: $accent-color-yellow;
+      }
+    }
+  }
+}

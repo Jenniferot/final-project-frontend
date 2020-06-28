@@ -1,0 +1,88 @@
+.navbar {
+  @include display(row, space-between, flex-end);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 60px;
+  width: 100%;
+  padding: 0 20px;
+  z-index: 2000;
+  border-bottom: 5px solid rgb(0, 24, 22);
+  background-color: black;
+
+  @media (min-width: 667px) {
+    height: 70px;
+  }
+
+  .navleft {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+  }
+
+  .navright {
+    display: flex;
+    margin-bottom: 11px;
+    width: 60%;
+    justify-content: flex-end;
+  }
+
+  .logo {
+    display: flex;
+    justify-content: space-between;
+    width: fit-content;
+    margin-left: 15px;
+  }
+
+  h3 {
+    font-family: Monoton;
+    font-weight: 400;
+    font-size: 22px;
+    color: rgb(86, 242, 219);
+    text-decoration-color: black;
+    margin-bottom: 3px;
+
+    @media (min-width: 1024px) {
+      font-size: 28px;
+      margin-bottom: 0px;
+    }
+  }
+
+  h3 .find {
+    color: rgb(0, 140, 131);
+    text-decoration-color: black;
+  }
+
+  .navbar-signin-login {
+    @include display(row, flex-end, center);
+    width: fit-content;
+    margin-right: 10px;
+    align-self: center;
+
+
+    &:hover {
+      color: rgb(86, 242, 219);
+    }
+
+    @media (max-width: 667px) {
+      display: none;
+
+    }
+
+    .right-arrow-container {
+      display: none;
+
+      @media (min-width: 667px) {
+        display: inline;
+      }
+    }
+  }
+
+  a {
+    font-family: "Roboto", sans-serif;
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 13px;
+  }
+}

@@ -1,0 +1,16 @@
+.imdbRatingPlugin {
+  margin-left: 10px;
+  width: fit-content;
+  display: inline-flex;
+
+  a {
+    margin-right: 5px;
+  }
+
+  p {
+    color: white;
+    font-size: 14px;
+    margin: 0;
+    font-weight: lighter;
+  }
+}

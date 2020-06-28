@@ -1,0 +1,24 @@
+@import './mixin-var.scss';
+
+.watchlistbuttonextended {
+  button {
+    @include button(3px, 5px 10px);
+    @include colors(white, $accent-color-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 11px;
+
+    &:hover {
+      background-color: $accent-color-button;
+    }
+
+    &.added {
+      @include colors(white, $accent-color-yellow);
+    }
+  }
+
+  .added-button {
+    height: 9px;
+    width: 8px;
+  }
+}

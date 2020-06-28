@@ -1,0 +1,49 @@
+@import './login-register.scss';
+@import './navbar.scss';
+@import './movie-item.scss';
+@import './imageslider.scss';
+@import './view-more-movies.scss';
+@import './thumbnail-gallery.scss';
+@import './profile.scss';
+@import './searchbar.scss';
+@import './hamburger-menu.scss';
+@import './imdbRatingPlugin.scss';
+@import './actorpage.scss';
+@import './randommoviegenerator.scss';
+@import './watchlistbutton.scss';
+@import './watchlistbuttonextended.scss';
+@import './review.scss';
+@import './loading-animation.scss';
+@import './rightarrow.scss';
+
+body {
+  padding: 20px;
+  padding-top: 80px;
+  color: white;
+  background-color: #070707;
+  margin: 0;
+  margin-top: 14px;
+  font-family: Roboto;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h4 {
+  font-size: 16px;
+  color: white;
+}
+
+h5 {
+  font-size: 16px;
+  color: white;
+  text-decoration: none;
+  text-align: left;
+  margin-bottom: 0px;
+}
+
+p {
+  margin: 5px 0;
+  font-size: 14px;
+}

@@ -1,0 +1,169 @@
+@import './mixin-var.scss';
+
+.welcome-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  height: fit-content;
+  width: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 14px;
+  font-weight: 200;
+
+  @media (min-width: 1024px) {
+    margin-top: 40px;
+  }
+}
+
+.welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 26px;
+  font-family: monospace;
+  font-weight: 500;
+  text-align: center;
+
+  @media (min-width: 1024px) {
+    font-size: 32px;
+  }
+
+  h6 {
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    margin-top: 16px;
+    width: 80%;
+    line-height: 18px;
+
+    @media (min-width: 1024px) {
+      font-size: 16px;
+      line-height: 22px;
+    }
+  }
+}
+
+.watchlist-container {
+  border: 0px solid rgb(4, 121, 121);
+  border-radius: 5px;
+  display: flex;
+  margin-top: 20px;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  section:last-child {
+    float: left;
+  }
+
+  .movie-link {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 1024px) {}
+  }
+
+  p {
+    margin-bottom: 0px;
+    font-family: "Roboto", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: black;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    line-height: 14px;
+    text-decoration: none;
+
+    @media (min-width: 1024px) {
+      -webkit-line-clamp: 4;
+    }
+  }
+}
+
+.watch-item {
+  display: flex;
+  justify-content: flex-start;
+  width: 300px;
+  border-radius: 4px;
+  background-color: $search-field-gray;
+  margin-bottom: 20px;
+  padding: 20px;
+  flex-direction: column;
+  position: relative;
+  margin: 15px;
+
+  .movie-image {
+    border: solid 4px rgb(0, 0, 0);
+    background-color: rgb(0, 0, 0);
+    box-shadow: 3px 4px 4px rgb(130, 155, 160);
+    margin-bottom: 14px;
+    height: 140px;
+
+    @media (min-width: 1024px) {
+      height: 130px;
+    }
+  }
+}
+
+.right-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  max-height: 90px;
+  margin-bottom: 15px;
+
+  @media (min-width: 1024px) {
+    justify-content: flex-start;
+    max-height: 120px;
+  }
+
+  .movie-title {
+    color: rgb(0, 83, 92);
+    font-size: 10px;
+    font-family: "Roboto";
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    margin: 0;
+  }
+
+  .year {
+    margin-top: 2px;
+    font-weight: 500;
+    margin-left: 4px;
+  }
+}
+
+.remove-button {
+  @include button(2px, 3px 8px);
+  @include colors(white, $accent-orange);
+  width: fit-content;
+  font-size: 11px;
+  position: absolute;
+  right: 12px;
+  bottom: 10px;
+}
+
+.logout {
+  @include button(2px, 3px 8px);
+  @include colors($accent-color, transparent);
+  font-size: 11px;
+  text-align: end;
+  font-weight: 600;
+  margin-top: 15px;
+  z-index: 99;
+  border: solid 1px $accent-color-dark;
+
+  &:hover {
+    color: $accent-color-yellow;
+  }
+}
