@@ -13,7 +13,7 @@ export const Profile = ({ loggedIn, setLoggedIn }) => {
   const [list, setList] = useState([])
 
   useEffect(() => {
-    fetch(`http://localhost:8080/users/${userId}/watchlist`, {
+    fetch(`https://final-project-db-jennifer.herokuapp.com/users/${userId}/watchlist`, {
       method: "GET",
       headers: {
         "Authorization": `${accessToken}`

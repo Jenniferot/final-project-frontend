@@ -26,7 +26,7 @@ export const WatchlistButton = ({ item }) => {
     dispatch(addToWatchlist(title, id, poster, overview, year))
     setAdded(true)
 
-    const response = await fetch(`http://localhost:8080/users/${userId}/watchlist`, {
+    const response = await fetch(`https://final-project-db-jennifer.herokuapp.com/users/${userId}/watchlist`, {
       method: 'PUT',
       headers: {
         "Content-Type": "application/json",

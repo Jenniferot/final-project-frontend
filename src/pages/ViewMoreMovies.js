@@ -13,7 +13,7 @@ export const ViewMoreMovies = ({ API_KEY, type, fetchtitle, moviePlaceholder, lo
   const [page, setPage] = useState(1)
   const [allPages, setAllPages] = useState()
   const [optionValue, setOptionValue] = useState("popularity.desc")
-  
+
   let URL;
 
   switch (type) {
@@ -86,11 +86,11 @@ export const ViewMoreMovies = ({ API_KEY, type, fetchtitle, moviePlaceholder, lo
               </optgroup>
 
               <optgroup label="Release date">
-                <option value="release.desc" selected={optionValue === "release.desc"}>
+                <option value="release_date.desc" selected={optionValue === "release_date.desc"}>
                   newest first
             </option>
 
-                <option value="release.asc" selected={optionValue === "release.asc"}>
+                <option value="release_date.asc" selected={optionValue === "release_date.asc"}>
                   oldest first
             </option>
               </optgroup>
