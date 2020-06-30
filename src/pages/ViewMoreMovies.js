@@ -6,7 +6,7 @@ import { capitalizeFirstLetter } from '../utils/StringUtils'
 import { LoadingAnimation } from '../components/Loadinganimation/LoadingAnimation'
 import standingPlaceholder from '../images/placeholderS.png'
 
-export const ViewMoreMovies = ({ API_KEY, type, fetchtitle, moviePlaceholder, loggedIn }) => {
+export const ViewMoreMovies = ({ API_KEY, type, fetchtitle, loggedIn }) => {
 
   const params = useParams()
   const [movies, setMovies] = useState([])
@@ -14,34 +14,34 @@ export const ViewMoreMovies = ({ API_KEY, type, fetchtitle, moviePlaceholder, lo
   const [allPages, setAllPages] = useState()
   const [optionValue, setOptionValue] = useState("popularity.desc")
 
-  let URL;
+  let fetchKey = type;
 
-  switch (type) {
-    case "genres":
-      const genreId = params.genreId
-      const genreName = params.genreName
-      fetchtitle = genreName
-      URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${optionValue}&include_adult=false&include_video=false&page=${page}&with_genres=${genreId}`
-      break;
-    case "now-playing":
-      URL = `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=${page}`
-      break;
-    case "upcoming":
-      URL = `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=${page}`
-      break;
-    case "top-rated":
-      URL = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=${page}`
-      break;
-    case "trending-week":
-      URL = `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&language=en-US&page=${page}`
-      break;
-    case "trending-today":
-      URL = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&language=en-US&page=${page}`
-      break;
-    case "similar-movies":
-      const movieId = params.movieId
-      URL = `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${API_KEY}&language=en-US&page=${page}`
+  const pagedUrlFactory = (page) => {
+    switch (type) {
+      case "genres":
+        const genreId = params.genreId
+        const genreName = params.genreName
+        fetchtitle = genreName
+        fetchKey = genreId;
+
+        return `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${optionValue}&include_adult=false&include_video=false&page=${page}&with_genres=${genreId}`
+      case "now-playing":
+        return `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=${page}`
+      case "upcoming":
+        return `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=${page}`
+      case "top-rated":
+        return `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=${page}`
+      case "trending-week":
+        return `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&language=en-US&page=${page}`
+      case "trending-today":
+        return `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&language=en-US&page=${page}`
+      case "similar-movies":
+        const movieId = params.movieId
+        return `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${API_KEY}&language=en-US&page=${page}`
+    }
   }
+
+  let URL = pagedUrlFactory(page);
 
   useEffect(() => {
     fetch(URL)
@@ -50,7 +50,7 @@ export const ViewMoreMovies = ({ API_KEY, type, fetchtitle, moviePlaceholder, lo
         setAllPages(res.total_pages)
         setMovies(res.results)
       })
-  }, [URL])
+  }, [fetchKey, optionValue])
 
   if (!movies) {
     return (
@@ -64,35 +64,35 @@ export const ViewMoreMovies = ({ API_KEY, type, fetchtitle, moviePlaceholder, lo
           <h4>{capitalizeFirstLetter(fetchtitle)}</h4>
 
           {type === "genres" &&
-            <select onChange={(event) => { setOptionValue(event.target.value) }}>
+            <select onChange={(event) => { setOptionValue(event.target.value); setPage(1) }}>
               <optgroup label="Popularity">
                 <option value="popularity.desc" selected={optionValue === "popularity.desc"}>
                   high-to-low
-            </option>
+                </option>
 
                 <option value="popularity.asc" selected={optionValue === "popularity.asc"}>
                   low-to-high
-            </option>
+                </option>
               </optgroup>
 
               <optgroup label="Vote average">
                 <option value="vote_average.desc" selected={optionValue === "vote_average.desc"}>
                   high-to-low
-            </option>
+                </option>
 
                 <option value="vote_average.asc" selected={optionValue === "vote_average.asc"}>
                   low-to-high
-            </option>
+                </option>
               </optgroup>
 
               <optgroup label="Release date">
-                <option value="release_date.desc" selected={optionValue === "release_date.desc"}>
+                <option value="release_date.desc" selected={optionValue === "release.desc"}>
                   newest first
-            </option>
+                </option>
 
-                <option value="release_date.asc" selected={optionValue === "release_date.asc"}>
+                <option value="release_date.asc" selected={optionValue === "release.asc"}>
                   oldest first
-            </option>
+                </option>
               </optgroup>
             </select>
           }
@@ -134,7 +134,7 @@ export const ViewMoreMovies = ({ API_KEY, type, fetchtitle, moviePlaceholder, lo
             )
           })}
 
-          < Pagination page={page} setPage={setPage} allPages={allPages} movies={movies} setMovies={setMovies} URL={URL} />
+          < Pagination page={page} setPage={setPage} allPages={allPages} movies={movies} setMovies={setMovies} urlFactoryFunction={pagedUrlFactory} />
 
         </div>
 
