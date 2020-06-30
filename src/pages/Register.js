@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { user, handleSignup } from '../components/reducers/user';
+import { useHistory } from 'react-router-dom'
+import { handleSignup, handleLogin } from '../components/reducers/user';
 import { Accountheader } from '../components/LoginRegister/Accountheader'
 import { Linksection } from '../components/LoginRegister/Linksection'
 import { Errormessage } from '../components/LoginRegister/Errormessage'
 
-export const Register = () => {
-
+export const Register = ({ setLoggedIn }) => {
+  const history = useHistory()
   const dispatch = useDispatch()
 
   const [name, setName] = useState()
@@ -22,7 +23,7 @@ export const Register = () => {
     if (password !== confirmedPassword) {
       setErrorMessage("Passwords do not match")
     } else {
-      dispatch(handleSignup(name, email, password, setErrorMessage))
+      dispatch(handleSignup(name, email, password, setErrorMessage, setLoggedIn))
     }
   }
 
